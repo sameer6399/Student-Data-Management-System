@@ -73,7 +73,7 @@ def f1():
     root.withdraw()
     adst.deiconify()
     entAddRno.focus()
-    
+
 
 def f3():
 	vist.deiconify()
@@ -83,7 +83,7 @@ def f3():
 	try:
 		con = cx_Oracle.connect("system/abc123")
 		cursor = con.cursor()
-		sql = "select * from student" 
+		sql = "select * from student"
 		cursor.execute(sql)
 		data = cursor.fetchall()
 		msg= ''
@@ -93,10 +93,10 @@ def f3():
 		stData.delete('1.0','end')               #removes all the precious data on the text and makes it blank
 		stData.insert(INSERT, msg)               #insert the data
 		stData.config(state=DISABLED)            #disabled the state and makes it read-only
-			
+
 	except 	cx_Oracle.DatabaseError as e:
 		con.rollback()
-		
+
 
 	finally:
 		if cursor is not None:
@@ -174,7 +174,7 @@ def f5():
             entAddRno.delete(0,END)
             entAddRno.focus()
             return
-        
+
         sname = entAddName.get()
         if sname.isdigit():
             messagebox.showerror("MISTAKE","Enter Valid Name")
@@ -183,7 +183,7 @@ def f5():
             return
         else:
             name = sname
-        
+
         smarks = entAddMarks.get()
         if smarks.isdigit() and int(smarks)>0 and int(smarks)<101:
             marks = int(smarks)
@@ -192,7 +192,7 @@ def f5():
             entAddMarks.delete(0,END)
             entAddMarks.focus()
             return
-        
+
         sql = "insert into student values ('%d','%s','%d')"
         args = (rno,name,marks)
         cursor = con.cursor()
@@ -208,7 +208,7 @@ def f5():
             cursor.close()
         if con is not None:
             con.close()
-    
+
 
 lblAddRno = Label(adst, text="Enter Roll No. ")
 entAddRno = Entry(adst, bd=5)
@@ -273,7 +273,7 @@ def f10():
                 entAddRnoo.delete(0,END)
                 entAddRnoo.focus()
                 return
-                
+
             cursor = con.cursor()
             sql = "delete from student where rno='%d'"
             args = (rno)
@@ -293,7 +293,7 @@ def f10():
                 cursor.close()
             if con is not None:
                 con.close()
-    
+
 lblAddRnoo = Label(delst, text="Enter Roll No. ")
 entAddRnoo= Entry(delst, bd=5)
 btnAddDelete = Button(delst, text="Delete", command=f10)
@@ -329,7 +329,7 @@ def f12():
             entAddRnooo.delete(0,END)
             entAddRnooo.focus()
             return
-        
+
         sname = entAddNamee.get()
         if sname.isdigit():
             messagebox.showerror("MISTAKE","Enter Valid Name")
@@ -338,7 +338,7 @@ def f12():
             return
         else:
             name = sname
-        
+
         smarks = entAddMarkss.get()
         if smarks.isdigit() and int(smarks)>0 and int(smarks)<101:
             marks = int(smarks)
@@ -347,7 +347,7 @@ def f12():
             entAddMarkss.delete(0,END)
             entAddMarkss.focus()
             return
-        
+
         sql = "update student set name='%s', marks='%d' where rno='%d'"
         args = (name,marks,rno)
         cursor = con.cursor()
@@ -368,8 +368,8 @@ def f12():
             cursor.close()
         if con is not None:
             con.close()
-    
-    
+
+
 
 lblAddRnooo = Label(upst, text="Enter Roll No. ")
 entAddRnooo = Entry(upst, bd=5)
